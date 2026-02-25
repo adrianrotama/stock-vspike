@@ -10,7 +10,7 @@ TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessag
 
 # --- Screening thresholds (defaults; override via backtest optimizer) ---
 MIN_PRICE = 100                     # IDR – filter penny stocks
-MIN_AVG_TXN_VALUE = 1_000_000_000   # IDR 1 B average daily transaction
+MIN_AVG_TXN_VALUE = 1_000_000       # IDR 1 M average daily transaction
 VOLUME_SMA_WINDOW = 20              # days for RVOL baseline
 RVOL_THRESHOLD = 5.0                # relative‑volume spike multiplier
 PRICE_POSITION_MIN = 0.5            # close must be in upper half of day range
@@ -19,7 +19,7 @@ PRICE_POSITION_MIN = 0.5            # close must be in upper half of day range
 RETRACE_PCT = 3.0                   # max % retracement from pre‑spike close
 EMA_PERIOD = 10                     # EMA period for MA‑reclaim confirmation
 MFI_PERIOD = 14                     # Money Flow Index look‑back
-MFI_MIN = 40                        # minimum MFI at entry
+MFI_MIN = 20                        # minimum MFI at entry
 
 # --- Exit ---
 SL_PCT = 3.0                        # stop‑loss % below pre‑spike close

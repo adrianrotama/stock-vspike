@@ -52,6 +52,9 @@ python scripts/run_backtest.py BBCA TLKM BMRI --days 365
 
 # Compare all 3 take-profit modes
 python scripts/run_backtest.py BBCA --compare
+
+# Show Trades
+python scripts/run_backtest.py BBCA --trades
 ```
 
 ### 4. Deploy to GitHub Actions (free)
@@ -74,7 +77,7 @@ You can also trigger any workflow manually from the Actions tab.
 | # | Filter | Default |
 |---|---|---|
 | 1 | Close >= minimum price | IDR 100 |
-| 2 | 20-day avg transaction value >= threshold | IDR 1B |
+| 2 | 20-day avg transaction value >= threshold | IDR 1M |
 | 3 | Relative Volume (RVOL) >= threshold | 5x |
 | 4 | Green candle (close > open) | — |
 | 5 | Close in upper 50% of day's range | 0.5 |
@@ -108,9 +111,9 @@ The optimiser tests combinations of:
 | `retrace_pct` | 1–8% | 3% |
 | `ema_period` | 5, 10, 20 | 10 |
 | `sl_pct` | 2–5% | 3% |
-| `tp_mode` | 1, 2, 3 | 1 |
+| `tp_mode` | 1, 2, 3 | 2 |
 | `trailing_pct` | 1–5% | 3% |
-| `mfi_min` | 20–60 | 40 |
+| `mfi_min` | 20–60 | 20 |
 | `vol_window` | 10–30 | 20 |
 
 Output includes: Win Rate, Return %, Max Drawdown, Sharpe Ratio, Expectancy, and number of trades.
