@@ -18,6 +18,8 @@ from pathlib import Path
 
 import pandas as pd
 
+pd.set_option('display.max_colwidth', None)
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.data.market_data import fetch_daily_ohlcv

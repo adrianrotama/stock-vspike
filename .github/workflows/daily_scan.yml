@@ -4,7 +4,6 @@ on:
   schedule:
     # 19:00 WIB = 12:00 UTC, Monday–Friday
     - cron: '0 12 * * 1-5'
-  workflow_dispatch: # manual trigger for testing
 
 jobs:
   scan:
