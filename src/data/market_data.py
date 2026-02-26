@@ -34,7 +34,7 @@ def fetch_daily_ohlcv(
     Returns a DataFrame with columns:
     ``Open, High, Low, Close, Volume``  (DatetimeIndex).
     """
-    end = end or datetime.now()
+    end = end or datetime.now() + timedelta(days=1)
     start = end - timedelta(days=days)
     symbol = _yf_ticker(ticker)
 
@@ -75,7 +75,7 @@ def fetch_bulk_daily(
 
     Returns ``{ticker_code: DataFrame}`` (only tickers with data).
     """
-    end = end or datetime.now()
+    end = end or datetime.now() + timedelta(days=1)
     start = end - timedelta(days=days)
 
     symbols = [_yf_ticker(t) for t in tickers]

@@ -124,6 +124,13 @@ python scripts/run_backtest.py BBCA --days 730
 
 # Compare TP modes side by side
 python scripts/run_backtest.py BBCA BMRI --compare
+
+# Show interactive entry/exit chart
+python scripts/run_backtest.py BBCA --plot
+
+# Diagnostic tool – inspect why a ticker is or isn't generating signals.
+python scripts/diagnose.py INKP
+python scripts/diagnose.py INKP --date 2026-02-26
 ```
 
 ## Configuration

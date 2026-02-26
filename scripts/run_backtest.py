@@ -23,7 +23,8 @@ pd.set_option('display.max_colwidth', None)
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.data.market_data import fetch_daily_ohlcv
-from src.backtest.optimizer import compare_tp_modes, optimize, print_trades, run_single
+from src.backtest.optimizer import compare_tp_modes, optimize, print_trades, run_single, Backtest
+from src.backtest.strategy import VolumeSpikeRetracement
 
 logging.basicConfig(
     level=logging.INFO,
@@ -58,6 +59,8 @@ def main() -> None:
         "--trades", action="store_true",
         help="Print each trade's buy date and sell date",
     )
+    parser.add_argument("--plot", action="store_true", help="Show interactive entry/exit chart")
+
     args = parser.parse_args()
 
     df = _fetch_and_concat(args.tickers, args.days)
@@ -68,6 +71,11 @@ def main() -> None:
         cmp = compare_tp_modes(df)
         print(cmp.to_string(index=False))
         print()
+    if args.plot:
+        print("\n=== Plotting entry/exit chart ===\n")
+        bt = Backtest(df, VolumeSpikeRetracement, cash=100_000_000, commission=0.0015)
+        stats = bt.run()      # use defaults or pass best params from optimize
+        bt.plot()             # opens Bokeh chart in browser with best params
     else:
         print("\n=== Optimising parameters ===\n")
         stats, heatmap = optimize(df, maximize=args.maximize)
